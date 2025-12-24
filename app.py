@@ -2,6 +2,7 @@ import streamlit as st
 import yfinance as yf
 import pandas as pd
 import plotly.graph_objects as go
+from calculations import process_data
 
 # Configuração da Página
 st.set_page_config(page_title="Market Math Analytics", layout="wide")
