@@ -116,7 +116,9 @@ if st.sidebar.button("Analisar Ativos"):
                 #### 3. Volatilidade
                 Calculada via desvio padrão móvel dos retornos logarítmicos, anualizada.
                 $$
-                \sigma = \mathrm{std}\!\left(\ln\left(\frac{P_t}{P_{t-1}}\right)\right)\times\sqrt{252}
+                \sigma = \mathrm{std}\!\left(
+                \ln\left(\frac{P_t}{P_{t-1}}\right)
+                \right)\times\sqrt{252}
                 $$
 
                 """)
