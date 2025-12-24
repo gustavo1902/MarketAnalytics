@@ -16,34 +16,31 @@ periodo = sidebar.selectbox("Período", ["1mo", "3mo", "6mo", "1y"])
 
 if st.button("Analisar"):
     with st.spinner('Baixando dados e calculando derivadas...'):
-        #  Aquisição de Dados
         data = yf.download(ticker, period=periodo)
         
+        if isinstance(data.columns, pd.MultiIndex):
+            data.columns = data.columns.get_level_values(0)
+        
         if not data.empty:
-            data['Retorno'] = data['Close'].pct_change()
-            
-            # 1ª Derivada (Velocidade da mudança de preço)
-            data['Velocity'] = data['Close'].diff() 
-            # 2ª Derivada (Aceleração - indica mudança de tendência)
-            data['Acceleration'] = data['Velocity'].diff()
+            # st.write(data.head()) 
 
-            # Visualização
+            # Processamento (chama sua função do calculations.py)
+            df = process_data(data)
+            
             col1, col2 = st.columns(2)
             
             with col1:
                 st.subheader("Preço de Fechamento")
-                st.line_chart(data['Close'])
+                st.line_chart(df['Close'])
             
             with col2:
                 st.subheader("Aceleração do Preço (2ª Derivada)")
-                st.caption("Picos indicam mudanças bruscas de tendência")
-                st.bar_chart(data['Acceleration'])
+                st.bar_chart(df['Acceleration'])
 
-            # Estatísticas
             st.write("### Estatísticas Descritivas")
-            st.dataframe(data.describe())
+            st.dataframe(df.describe())
             
         else:
-            st.error("Ativo não encontrado ou sem dados.")
+            st.error(f"Não foi possível baixar dados para o ticker {ticker}. Tente 'PETR4.SA' ou 'AAPL'.")
 
 st.info("Desenvolvido para fins de estudo de Python e Finanças.")
