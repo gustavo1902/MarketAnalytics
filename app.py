@@ -94,10 +94,8 @@ if st.sidebar.button("Analisar Ativos"):
             st.plotly_chart(fig_acc, use_container_width=True)
 
             # --- EXPLICAÇÃO MATEMÁTICA ---
-            with st.expander("🎓 Explicação Matemática (Clique para abrir)"):
-                st.markdown("""
-                ### O Cálculo por trás dos gráficos
-                
+            with st.expander(" Explicação Matemática (Clique para abrir)"):
+                st.markdown(r"""                
                 Utilizamos **Cálculo Diferencial Discreto** para entender a dinâmica do preço.
                 
                 #### 1. Velocidade (1ª Derivada)
@@ -120,7 +118,6 @@ if st.sidebar.button("Analisar Ativos"):
                 \ln\left(\frac{P_t}{P_{t-1}}\right)
                 \right)\times\sqrt{252}
                 $$
-
                 """)
                 
         else:
