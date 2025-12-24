@@ -5,9 +5,9 @@ import plotly.graph_objects as go
 from calculations import process_data
 
 # Configuração da Página
-st.set_page_config(page_title="Market Math Analytics Pro", layout="wide")
+st.set_page_config(page_title="Market Math Analytics", layout="wide")
 
-st.title(" Market Math Analytics Pro")
+st.title(" Market Math Analytics")
 st.markdown("Análise avançada de ativos usando **Cálculo Numérico** e **Estatística**.")
 
 # --- SIDEBAR DE CONTROLES ---
